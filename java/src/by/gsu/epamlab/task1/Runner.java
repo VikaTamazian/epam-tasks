@@ -18,9 +18,8 @@ public class Runner {
 
             if (trip != null && (trip.getNumberOfDays() != 0)) {
                 trip.show(trip.getEmployeesAccount(), trip.getTransportationExpenses(), trip.getNumberOfDays());
-                int tripTotal = trip.getTotal();
-                if (maxTotal < tripTotal) {
-                    maxTotal = tripTotal;
+                if (maxTotal < trip.getTotal()) {
+                    maxTotal = trip.getTotal();
                     expensiveTrip = trip;
                 }
             }
