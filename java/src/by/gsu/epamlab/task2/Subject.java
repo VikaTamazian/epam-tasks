@@ -39,12 +39,13 @@ public class Subject {
     }
 
     public double getMass(Material material) {
-        return (material.getDensity() * volume);
+        return material.getDensity() * volume;
     }
 
 
     @Override
     public String toString() {
-        return (name + ";" + material + ";" + volume + ";" + getMass(material));
+
+        return String.format("%s;%s,%f,%f", name, material, volume, getMass(material));
     }
 }

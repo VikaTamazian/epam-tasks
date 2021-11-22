@@ -1,16 +1,19 @@
 package by.gsu.epamlab.task2;
 
-public final class Material {
+public class Material {
     private String name;
-    private double density;
+    private final double density;
+
+
+    public Material(double density) {
+        this.density = 0.0;
+    }
 
     public Material(String name, double density) {
         this.name = name;
         this.density = density;
     }
 
-    public Material() {
-    }
 
     public String getName() {
         return name;
@@ -22,6 +25,7 @@ public final class Material {
 
     @Override
     public String toString() {
-        return (name + ";" + density);
+
+        return String.format("%s;%f", name, density);
     }
 }
