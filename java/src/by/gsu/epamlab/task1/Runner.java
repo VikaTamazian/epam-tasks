@@ -1,7 +1,5 @@
 package by.gsu.epamlab.task1;
 
-import static by.gsu.epamlab.task1.BusinessTrip.convertToDecimal;
-
 public class Runner {
     public static void main(String[] args) {
         BusinessTrip[] trips = {
