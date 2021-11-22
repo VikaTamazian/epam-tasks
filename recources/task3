@@ -1,0 +1,31 @@
+Code Exercise
+Create the package by.gsu.epamlab and define the class Purchase inside which represents a wholesale purchase of the same product of the same price during a week. The class Purchase must implement the interface Comparable parameterized by this class.
+Class fields:
+product name,
+price (in BYN),
+number of purchased units,
+discount percent,
+week day (create enumeration WeekDay).
+Constructors:
+no-arg constructor,
+parameterized constructor.
+Methods:
+getters/setters;
+getCost( ) – returns the purchase cost:
+price * number * (100 – percent) / 100, rounded to 1.00 BYN;
+toString( ) – returns a string representation of a purchase in the csv–format: each non constant field and the purchase cost, separated by the ";" symbol);
+compareTo(Purchase purchase) – compares numbers of purchased units of purchases and returns a negative integer, zero, or a positive integer as this purchase is less than, equal to, or greater than the specified purchase.
+File src\in.txt consists of 11 lines with correct data.
+The first line contains the number PURCHASES_NUMBER from 0 to 10. Next 10 lines contain information about 10 valid purchases. Values within a line are separated by spaces. The value for a weekday is given by numbers from 0 to 6, where 0 is Sunday, … , 6 is Saturday.
+Define the Runner class in the default package, where:
+1. Create an array for PURCHASES_NUMBER purchases.
+2. Initialize this array by the file data.
+3. Output the array content to the console in the following format:
+class constants
+purchase[0]
+…
+purchase[PURCHASES_NUMBER - 1]
+4. Calculate the mean cost of all purchases (3 digits after the point), the total cost of all purchases on Monday, the day with the maximum purchase cost. Output them to the console.
+5. Sort the array by the field number in the ascending order by the method sort( ) of the class Arrays.
+6. Output the array content to the console in the format above.
+7. Find some purchase with number equalled to 5 with the method binarySearch( ) of the class Arrays and output it.
