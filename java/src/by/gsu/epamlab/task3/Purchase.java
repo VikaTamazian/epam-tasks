@@ -46,7 +46,7 @@ public class Purchase implements Comparable<Purchase> {
 
     @Override
     public String toString() {
-        return String.format("%d;%d;%s;%.2f", quantity, discount, weekDay, (double) getCost() / 100.00);
+        return String.format("%d;%d;%s;%.2f", quantity, discount, weekDay, getCost() / 100.00);
 
     }
 
