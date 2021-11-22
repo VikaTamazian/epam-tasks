@@ -13,6 +13,7 @@ public class Runner {
         };
 
         int maxTotal = 0;
+        BusinessTrip expensiveTrip = null;
         for (BusinessTrip trip : trips) {
 
             if (trip != null && (trip.getNumberOfDays() != 0)) {
@@ -20,19 +21,20 @@ public class Runner {
                 int tripTotal = trip.getTotal();
                 if (maxTotal < tripTotal) {
                     maxTotal = tripTotal;
+                    expensiveTrip = trip;
                 }
             }
         }
-        System.out.printf("business trip with maximum cost: %s \n", convertToDecimal(maxTotal));
+        System.out.printf("business trip with maximum cost: %s \n", expensiveTrip);
 
-        trips[trips.length - 1].setEmployeesAccount("test4");
+
         trips[trips.length - 1].setTransportationExpenses(650);
-        trips[trips.length - 1].setNumberOfDays(2);
 
-        System.out.println("duration: " + (trips[0].getNumberOfDays() + trips[1].getNumberOfDays()) + "\n");
+
+        System.out.printf("duration: %d\n", (trips[0].getNumberOfDays() + trips[1].getNumberOfDays()));
 
         for (BusinessTrip trip : trips) {
-            System.out.println(trip);
+            System.out.printf("%s", trip);
 
         }
     }

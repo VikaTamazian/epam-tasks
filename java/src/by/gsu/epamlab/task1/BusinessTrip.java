@@ -58,16 +58,12 @@ public class BusinessTrip {
 
     @Override
     public String toString() {
-        return employeesAccount + ";" + transportationExpenses + ";"
-               + numberOfDays + ";" + getTotal();
+        return String.format("%s;%s;%d;%s", employeesAccount,
+                convertToDecimal(transportationExpenses), numberOfDays, convertToDecimal(getTotal()));
     }
 
     public static String convertToDecimal(int value) {
-        if ((value % 100) < 10) {
-            return value / 100 + ".0" + value % 100;
-        } else {
-            return (value / 100 + "." + value % 100);
-        }
+        return String.format("%d.%02d", value / 100, value % 100);
     }
 
 }
