@@ -1,26 +1,19 @@
 package by.gsu.epamlab.task3;
 
+import java.util.Locale;
+
 public enum WeekDay {
-    SUNDAY("sunday"),
-    MONDAY("monday"),
-    TUESDAY("tuesday"),
-    WEDNESDAY("wednesday"),
-    THURSDAY("thursday"),
-    FRIDAY("friday"),
-    SATURDAY("saturday");
+    SUNDAY,
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY;
 
-    private String title;
-
-    WeekDay(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 
     @Override
     public String toString() {
-        return title;
+        return name().toLowerCase(Locale.ROOT);
     }
 }
