@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static by.gsu.epamlab.task3.MoneyConverter.*;
+
 public class Runner {
 
     public static void main(String[] args) throws IOException {
@@ -15,7 +17,7 @@ public class Runner {
             final int PURCHASES_NUMBER = scanner.nextInt();
             Purchase[] purchases = new Purchase[PURCHASES_NUMBER];
 
-            System.out.printf("%s;%d", Purchase.NAME, Purchase.PRICE);
+            System.out.printf("%s;%d\n", Purchase.NAME, Purchase.PRICE);
 
             int i = 0;
             while (scanner.hasNext()) {
@@ -33,8 +35,8 @@ public class Runner {
             for (Purchase purchase : purchases) {
                 totalCost += purchase.getCost();
             }
-            int meanCost = totalCost / purchases.length;
-            System.out.printf("average cost: %d.000\n", meanCost / 100);
+            double meanCost = totalCost / purchases.length;
+            System.out.printf("\naverage cost: %s\n", toConvert(meanCost));
 
             int mondayCost = 0;
             for (Purchase purchase : purchases) {
@@ -42,23 +44,24 @@ public class Runner {
                     mondayCost += purchase.getCost();
                 }
             }
-            System.out.printf("monday cost: %d.00\n", mondayCost / 100);
+            System.out.printf("monday cost: %s\n", toConvert(mondayCost));
 
             int maxCost = 0;
             for (Purchase purchase : purchases) {
                 if (purchase.getCost() > maxCost) {
-                    maxCost = purchase.getCost();
+                    maxCost = (int) purchase.getCost();
                 }
             }
-            System.out.printf("max cost: %d.00\n", maxCost / 100);
+            System.out.printf("max cost: %s\n", toConvert(maxCost));
 
-            System.out.println(Purchase.NAME + ";" + Purchase.PRICE);
+            System.out.println("\nincrease:\n" + Purchase.NAME + ";" + Purchase.PRICE);
             Arrays.sort(purchases);
             for (Purchase purchase : purchases) {
                 System.out.println(purchase);
             }
-            int index = Arrays.binarySearch(purchases, purchases[5]);
-            System.out.printf("sorted #5 purchase: %d", purchases[index]);
+            Purchase searchPurchase = new Purchase(5, 0, 0);
+            int index = Arrays.binarySearch(purchases, searchPurchase);
+            System.out.printf("\n5 pieces purchase: %s", purchases[index]);
 
         } catch (FileNotFoundException e) {
             System.err.println("Input file is not found");

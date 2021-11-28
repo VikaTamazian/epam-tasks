@@ -4,14 +4,21 @@ public class Purchase implements Comparable<Purchase> {
     public static final String NAME = "Bicycle";
     public static final int PRICE = 100000;
     private int quantity;
-    private int discount;
+    private double discount;
     private WeekDay weekDay;
 
-    public Purchase(int quantity, int discount, WeekDay weekDay) {
+    public Purchase(int quantity, double discount, WeekDay weekDay) {
         this.quantity = quantity;
         this.discount = discount;
         this.weekDay = weekDay;
     }
+
+    public Purchase(int quantity, double discount, int weekDay) {
+        this.quantity = quantity;
+        this.discount = discount;
+        this.weekDay = WeekDay.values()[weekDay];
+    }
+
 
     public Purchase() {
     }
@@ -24,11 +31,11 @@ public class Purchase implements Comparable<Purchase> {
         this.quantity = quantity;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
@@ -40,13 +47,13 @@ public class Purchase implements Comparable<Purchase> {
         this.weekDay = weekDay;
     }
 
-    public int getCost() {
-        return (PRICE * quantity * (100 - discount) / 100);
+    public double getCost() {
+        return Math.round(PRICE * quantity * (100 - discount) / 100);
     }
 
     @Override
     public String toString() {
-        return String.format("%d;%d;%s;%.2f", quantity, discount, weekDay, getCost() / 100.00);
+        return String.format("%d;%.2f;%s;%.2f", quantity, discount, weekDay, getCost() / 100.00);
 
     }
 
