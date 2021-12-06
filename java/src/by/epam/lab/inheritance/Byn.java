@@ -14,6 +14,10 @@ public class Byn implements Comparable<Byn> {
         this.kopeck = kopeck;
     }
 
+    public Byn(Byn byn) {
+        kopeck = byn.kopeck;
+    }
+
     @Override
     public String toString() {
         return String.format("%.2f", kopeck / 100.00);

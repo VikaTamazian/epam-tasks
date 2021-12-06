@@ -4,18 +4,31 @@ import java.util.Scanner;
 
 public class DiscountPurchase extends Purchase {
 
-    public static final double DISCOUNT_SMALL = 0.1;
+    private double discountSmall = 0.1;
 
     public DiscountPurchase() {
+    }
+
+    public DiscountPurchase(String name, Byn price, int quantity, double discountSmall) {
+        super(name, price, quantity);
+        this.discountSmall = discountSmall;
     }
 
     public DiscountPurchase(Scanner scanner) {
         super(scanner);
     }
 
+    public double getDiscountSmall() {
+        return discountSmall;
+    }
+
+    public void setDiscountSmall(double discountSmall) {
+        this.discountSmall = discountSmall;
+    }
+
     @Override
     public double getCost() {
-        return super.getCost() - super.getCost() * DISCOUNT_SMALL;
+        return super.getCost() - super.getCost() * getDiscountSmall();
     }
 
 }

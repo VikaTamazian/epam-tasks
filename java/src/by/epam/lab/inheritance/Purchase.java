@@ -22,7 +22,7 @@ public class Purchase implements Comparable<Purchase> {
 
     public Purchase(Scanner scanner) {
         this.name = scanner.next();
-        this.price.kopeck = scanner.nextInt();
+        this.price = new Byn(scanner.nextInt());
         this.quantity = scanner.nextInt();
     }
 
@@ -57,8 +57,7 @@ public class Purchase implements Comparable<Purchase> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Purchase purchase = (Purchase) o;
+        if (!(o instanceof Purchase purchase)) return false;
         return price == purchase.price && Objects.equals(name, purchase.name);
     }
 

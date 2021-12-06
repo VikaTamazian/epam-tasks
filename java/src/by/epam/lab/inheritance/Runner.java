@@ -15,12 +15,8 @@ public class Runner {
             double maxCost = 0d;
             Purchase expensivePurchase = null;
             for (int i = 0; i < purchases.length; i++) {
-                TypePurchase type = TypePurchase.valueOf(scanner.next());
-                String name = scanner.next();
-                Byn price = new Byn();
-                price.kopeck = scanner.nextInt();
-                int quantity = scanner.nextInt();
-                purchases[i] = new Purchase(name, price, quantity);
+                Purchase entity = PurchaseFactory.createPurchaseFromFactory(scanner);
+                purchases[i] = entity;
 
                 if (maxCost < purchases[i].getCost()) {
                     maxCost = purchases[i].getCost();
