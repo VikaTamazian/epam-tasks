@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class PurchaseFactory {
 
-    public static Purchase createPurchaseFromFactory(String type, Scanner scanner) {
-        TypePurchase typePurchase = TypePurchase.valueOf(type);
+    public static Purchase createPurchaseFromFactory(Scanner scanner) {
+        String next = scanner.next();
+        TypePurchase typePurchase = TypePurchase.valueOf(next);
         if (typePurchase == TypePurchase.GENERAL_PURCHASE) {
             return new Purchase(scanner);
         } else if (typePurchase == TypePurchase.DISCOUNT_PURCHASE) {
