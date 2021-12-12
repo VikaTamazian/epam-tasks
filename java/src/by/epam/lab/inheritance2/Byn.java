@@ -44,10 +44,6 @@ public class Byn implements Comparable<Byn> {
         return new Byn(value * k);
     }
 
-    public Byn mul(RoundMethod roundMethod, double k) {
-        return new Byn((int) roundMethod.roundFunction(value * k));
-    }
-
 
     public Byn round(RoundMethod roundMethod, int d) {
         int tenPow = pow(d);

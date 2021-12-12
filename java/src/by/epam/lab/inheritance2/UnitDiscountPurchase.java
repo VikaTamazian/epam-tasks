@@ -21,10 +21,8 @@ public class UnitDiscountPurchase extends AbstractPurchase {
 
     @Override
     public Byn getFinalCost(Byn baseCost) {
-        int value = getQuantity() * unitDiscount.getValue();
-        Byn byn = new Byn(value);
-        Byn sub = new Byn().sub(byn);
-        return new Byn(baseCost.add(sub));
+        return baseCost.sub(unitDiscount.mul(getQuantity()));
+
     }
 
     @Override

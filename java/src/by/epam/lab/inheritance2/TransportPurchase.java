@@ -1,20 +1,28 @@
 package by.epam.lab.inheritance2;
 
-public class TransportPurchase extends UnitDiscountPurchase {
+public class TransportPurchase extends AbstractPurchase {
     private Byn transportCost;
 
     public TransportPurchase() {
 
     }
 
-    public TransportPurchase(Product product, int quantity, Byn discount, Byn transportCost) {
-        super(product, quantity, discount);
+    public Byn getTransportCost() {
+        return transportCost;
+    }
+
+    public void setTransportCost(Byn transportCost) {
+        this.transportCost = transportCost;
+    }
+
+    public TransportPurchase(Product product, int quantity, Byn transportCost) {
+        super(product, quantity);
         this.transportCost = transportCost;
     }
 
     @Override
     public Byn getFinalCost(Byn baseCost) {
-        return super.getFinalCost(baseCost).add(transportCost);
+        return baseCost.add(transportCost);
     }
 
     @Override

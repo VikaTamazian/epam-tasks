@@ -7,14 +7,6 @@ public class QuantityDiscountPurchase extends AbstractPurchase {
     public QuantityDiscountPurchase() {
     }
 
-    @Override
-    protected Byn getFinalCost(Byn baseCost) {
-        if (getQuantity() >= BULK) {
-            baseCost.mul(1.0 - costDiscount / 100, RoundMethod.FLOOR, 0);
-        }
-        return baseCost;
-
-    }
 
     public QuantityDiscountPurchase(Product product, int quantity, double costDiscount) {
         super(product, quantity);
@@ -30,12 +22,12 @@ public class QuantityDiscountPurchase extends AbstractPurchase {
     }
 
     @Override
-    public Byn getCost() {
-        Byn cost = super.getCost();
+    protected Byn getFinalCost(Byn baseCost) {
         if (getQuantity() >= BULK) {
-            cost = cost.mul(1.0 - costDiscount / 100, RoundMethod.FLOOR, 0);
+            baseCost = baseCost.mul(((100 - costDiscount) / 100.0), RoundMethod.ROUND, 0);
         }
-        return cost;
+        return baseCost;
+
     }
 
     @Override
