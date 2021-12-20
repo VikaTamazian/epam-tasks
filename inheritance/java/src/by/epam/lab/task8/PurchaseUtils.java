@@ -44,7 +44,7 @@ public class PurchaseUtils<E extends Priceable> {
     }
 
     @SafeVarargs
-    public final <T extends Priceable> void printIsSameCost(Purchase<?>... purchases) {
+    public final void printIsSameCost(Purchase<?>... purchases) {
 
         boolean flag = false;
         for (Purchase<?> p : purchases) {
