@@ -8,16 +8,18 @@ import java.util.stream.Collectors;
 
 public class Runner {
     public static void main(String[] args) {
-        List<Trial> tests = new ArrayList<>();
-        tests.add(new Trial("Potter", 70, 70));
-        tests.add(new Trial("Weasley", 50, 60));
-        tests.add(new Trial("Granger", 100, 100));
-        tests.add(new LightTrial("Malfoy", 70, 80));
-        tests.add(new LightTrial("Patil", 60, 50));
-        tests.add(new StrongTrial("Longbottom", 80, 70));
-        tests.add(new StrongTrial("Thomas", 60, 90));
-        tests.add(new ExtraTrial("Finnigan", 90, 75, 75));
-        tests.add(new ExtraTrial("Brown", 60, 80, 70));
+        List<Trial> tests = new ArrayList<>(Arrays.asList(
+                new Trial("Potter", 70, 70),
+                new Trial("Weasley", 50, 60),
+                new Trial("Granger", 100, 100),
+                new LightTrial("Malfoy", 70, 80),
+                new LightTrial("Patil", 60, 50),
+                new StrongTrial("Longbottom", 80, 70),
+                new StrongTrial("Thomas", 60, 90),
+                new ExtraTrial("Finnigan", 90, 75, 75),
+                new ExtraTrial("Brown", 60, 80, 70)
+        ));
+
 
         System.out.println("***** Initial trials *****");
         printTests(tests);
@@ -29,8 +31,6 @@ public class Runner {
         findReferred(tests);
         System.out.println("***** All marks sums *****");
         toSumArray(tests);
-
-
     }
 
     private static void printTests(List<Trial> tests) {
@@ -38,20 +38,23 @@ public class Runner {
     }
 
     private static void isPassed(List<Trial> tests) {
-        tests.stream()
+        System.out.println(tests.stream()
                 .filter(Trial::isPassed)
-                .forEach(System.out::println);
-
+                .count());
     }
 
     private static void sortTests(List<Trial> tests) {
-        tests.stream().sorted(Comparator.comparing(Trial::result)).forEach(System.out::println);
+        tests.stream()
+                .sorted(Comparator.comparing(Trial::result))
+                .forEach(System.out::println);
 
     }
 
     private static void findReferred(List<Trial> tests) {
 
-        List<Trial> trials = tests.stream().map(Trial::clone).collect(Collectors.toList());
+        List<Trial> trials = tests.stream()
+                .map(Trial::clone)
+                .collect(Collectors.toList());
 
         trials
                 .stream()
@@ -62,7 +65,13 @@ public class Runner {
     }
 
     private static void toSumArray(List<Trial> tests) {
-        double[] result = tests.stream().mapToDouble(Trial::result).toArray();
-        Arrays.stream(result).forEach(sum -> System.out.println(sum + ";"));
+        double[] result = tests.stream()
+                .mapToDouble(Trial::result)
+                .toArray();
+        String collect = Arrays.stream(result)
+                .sorted()
+                .mapToObj(Double::toString).collect(Collectors.joining(";"));
+        System.out.println(collect);
+
     }
 }

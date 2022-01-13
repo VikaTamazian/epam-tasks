@@ -1,8 +1,7 @@
 package by.epam.lab;
 
 public class LightTrial extends Trial {
-    private static final int PASS_MARK1 = 35;
-    private static final int PASS_MARK2 = 60;
+
 
     public LightTrial() {
     }
@@ -13,6 +12,13 @@ public class LightTrial extends Trial {
 
     @Override
     public boolean isPassed() {
-        return getMark1() >= PASS_MARK1 && getMark2() >= PASS_MARK2;
+        return getMark1() >= Mark.PASS_MARK1.getValue() && getMark2() >= Mark.PASS_MARK2.getValue();
+    }
+
+    @Override
+    public LightTrial clone() {
+        LightTrial o;
+        o = (LightTrial) super.clone();
+        return o;
     }
 }
