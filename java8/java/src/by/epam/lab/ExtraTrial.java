@@ -2,7 +2,6 @@ package by.epam.lab;
 
 public class ExtraTrial extends Trial {
     private int mark3;
-    private static final int PASS_MARK3 = 65;
 
     public ExtraTrial(int mark3) {
     }
@@ -18,7 +17,7 @@ public class ExtraTrial extends Trial {
 
     @Override
     public boolean isPassed() {
-        return super.isPassed() && mark3 >= PASS_MARK3;
+        return super.isPassed() && mark3 >= Mark.PASS_MARK3.getValue();
     }
 
     protected String fieldsToString() {
@@ -26,15 +25,16 @@ public class ExtraTrial extends Trial {
     }
 
     @Override
-    protected double result() {
-        return super.result() + mark3;
-    }
-
-
-    @Override
     public Trial refreshMarks() {
         super.refreshMarks();
         mark3 = 0;
         return this;
+    }
+
+    @Override
+    public ExtraTrial clone() {
+        ExtraTrial o;
+        o = (ExtraTrial) super.clone();
+        return o;
     }
 }

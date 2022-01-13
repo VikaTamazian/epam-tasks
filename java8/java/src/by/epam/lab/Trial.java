@@ -3,7 +3,6 @@ package by.epam.lab;
 import java.util.Objects;
 
 public class Trial implements Cloneable {
-    public static final int PASS_MARK = 120;
     private String name;
     private int mark1;
     private int mark2;
@@ -34,7 +33,7 @@ public class Trial implements Cloneable {
     }
 
     public boolean isPassed() {
-        return result() >= PASS_MARK;
+        return result() >= Mark.PASS_MARK.getValue();
     }
 
 
